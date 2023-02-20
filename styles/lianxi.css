@@ -1,0 +1,220 @@
+@charset "utf-8";
+
+html {
+    width: 100%;
+    font-size: 10px;
+}
+body {
+    width: 100%;
+    padding: 0;
+  
+
+ 
+}
+
+.header {
+    width: 80%;
+    margin:0 auto;
+    margin-top:4rem;
+    font-size: 2.7rem;
+    display: flow-root;
+}
+
+.headerUl {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    background-color: black;
+    height: 2.9em;
+    color:white;
+    border-radius: 0.4em 0.4em 0 0;
+}
+
+.headerUl li {
+    width:calc(16.66% - 0.32em);
+    margin:0 0.16em;
+    height: 2.9em;
+    background-color: rgb(0, 0, 0);
+    float: left;
+    text-align: center;
+    line-height: 2.9em;
+    
+}
+
+.headerUl li:first-child {
+    border-radius: 0.4em 0 0 0 ;
+}
+
+.headerUl li:last-child {
+    border-radius: 0 0.4em 0 0 ;
+}
+
+
+
+
+
+.MainContainer{
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgb(31, 31, 31);
+    font-size: 1rem;/*作为em相对*/
+    padding-top: 3rem;
+
+}
+
+.musicFlash {
+    width: 35em;
+    height: 37em;
+    position: relative;
+    margin:0 auto;
+    float: left;
+    display: flow-root;
+}
+
+#dimian {
+    width: 35em;
+    height:35em;
+    margin:0 auto;
+    background:url("/images/dimian.png") center/cover no-repeat ;
+    position: absolute;
+    left:calc(50% - 17.5em);
+    top:calc(50% - 17.5em);
+    filter: drop-shadow(0px 0px 5px rgb(13, 30, 46));
+}
+
+#dizuo {
+    width: 35em;
+    height:35em;
+    margin:0 auto;
+    background-color: rgb(77, 59, 40);
+    position: absolute;
+    left:calc(50% - 17.5em);
+    top:calc(50% - 17.5em);
+    border-radius: 2em;
+}
+
+#guangy {
+    width: 35em;
+    height:35em;
+    margin:0 auto;
+    background:url("/images/guangy.png") center/cover no-repeat;
+    position: absolute;
+    left:calc(50% - 17.5em);
+    top:calc(50% - 17.5em);
+    
+}
+
+#musicPage {
+    width: 17.7em;
+    height:17.7em;
+    margin:0 auto;
+    background:url("/images/王力宏_Hear\ My\ Voice_4.jpg") center/cover no-repeat;
+    position: absolute;
+    left:calc(50% - 8.86em);
+    top:calc(50% - 8.86em);
+    border-radius: 50%;
+}
+
+#shoubing {
+    width: 9em;
+    height:29em;
+ 
+    position: absolute;
+    left:calc(50% + 9em);
+    top:calc(50% - 15.5em);
+    transform-origin: top right;
+    transform: rotate(8deg);
+    transition: all 1.5s;
+    background: url("/images/shoubing.png")  no-repeat;
+}
+
+ 
+
+.musicMessage {
+    float: left;
+    padding: 0.3em;
+    height: 10em;
+    font-size: 1.8em;
+    color:rgba(255, 255, 255, 0.677);
+    writing-mode: vertical-lr;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top:5em;
+    margin-left:0.6em;
+    display: flow-root;
+}
+
+.clearbox {
+    clear: both;
+}
+
+
+.lyricsAreaContainer {
+    width:70%;
+    font-size: 2rem;
+    height: 2.7em;
+    border: 2px solid rgb(152, 225, 211);
+    padding:10px 0 10px 0;
+    margin-top:1rem;
+    margin-left:auto;
+    margin-right: auto;
+    border-radius: 200px;
+}
+
+
+.musicButton {
+    margin:0 auto;
+    text-align: center;
+    margin-top:0.5em;
+}
+
+
+
+.lyricsArea {
+    height: 1.25em;
+    text-align: center;
+    white-space: nowrap;
+    margin:0 auto;
+    color:rgb(208, 211, 214);
+    line-height: 1.25em;
+    overflow: hidden;
+    letter-spacing: 0.25em;
+    border-right: 1px solid rgba(255, 255, 255, 0);
+}
+
+
+
+
+@keyframes blink {
+    50% {
+        border-color: rgba(138, 184, 165, 0.866);;
+    }
+}
+
+@keyframes typing {
+
+    from {
+        width:0;
+    }
+}
+
+
+.showStand {
+    width: 400px;
+    height: 400px;
+    background-color:antiquewhite;
+}
+
+.s1 {
+   
+    margin:auto;
+}
+.s2 {
+  
+    margin:auto;
+}
+
+
+
+
+
