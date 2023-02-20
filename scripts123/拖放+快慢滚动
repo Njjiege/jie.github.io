@@ -1,0 +1,132 @@
+"use strict"
+
+
+let isDragging = false;
+let id = null;
+document.addEventListener("mousedown",function(event){
+    event.preventDefault();
+    let target = event.target.closest(".draggable");
+    if(!target)return;
+    let shiftX = event.clientX - target.getBoundingClientRect().left;
+    let shiftY = event.clientY - target.getBoundingClientRect().top;
+
+    startDrag(event);
+
+    function startDrag(event){
+        if(isDragging)return;
+        isDragging = true;
+        target.style.position = "fixed";
+        moveAt(event);
+        document.addEventListener("mousemove",onMouseMove);
+        target.addEventListener("mouseup",onMouseUp);
+        
+    }
+
+    
+
+
+    function moveAt(event){
+        let newX = event.clientX - shiftX;
+        let newY = event.clientY - shiftY;
+        newY = Math.min(newY,document.documentElement.clientHeight - target.offsetHeight);//鼠标于鼠标Y轴最底部比较，谁小取谁。
+        newY = Math.max(newY,0);//鼠标坐标与图片最上面
+
+        let newBottom = newY + target.offsetHeight;
+        let docBottom = document.documentElement.getBoundingClientRect().bottom;
+
+        clearInterval(id);//移动时移除之前的setInterval，以此更换scrollY。
+        if( newBottom == document.documentElement.clientHeight){
+        
+            let scrollY = Math.min(docBottom - newBottom,8);
+
+            
+                
+            if( (event.clientY - target.getBoundingClientRect().top) - shiftY < 45){ //判断鼠标移动的坐标偏移值和down的偏移值比较大小
+                scrollY = 1;
+            }  
+           
+
+            if(scrollY < 0){    
+                scrollY = 0;
+            }
+
+            if(scrollY > 0 && scrollY < 1){
+                scrollY = 1;
+            }
+       
+
+            if(scrollY == 0)return;//如果到底了，不执行setInterval了。
+            
+       
+                //只有在不等于0的时候
+              id = setInterval(function(){
+                        window.scrollBy(0,scrollY);
+
+                    },1) //异步函数一定要加点延迟，否则速度不稳定。
+         
+        }
+
+
+        if(newY == 0){
+            let scrollY = Math.min( -document.documentElement.getBoundingClientRect().top , 8 );//转为正数比较
+        
+            if( (event.clientY - target.getBoundingClientRect().top) - shiftY > -45){//减出来是负的，跟负的比较，移动的偏移值大，就慢一点。
+                    scrollY = 1;
+            }  
+
+            if(scrollY < 0){    
+                scrollY = 0;
+            }
+
+            if(scrollY > 0 && scrollY < 1){
+                scrollY = 1;
+            }
+
+
+            if(scrollY == 0)return;
+
+            id = setInterval(function(){
+                window.scrollBy(0,-scrollY);
+                console.log(-scrollY);
+
+            },1) //异步函数一定要加点延迟，否则速度不稳定。
+ 
+
+        }
+
+
+
+
+        target.style.left = newX + "px";
+        target.style.top = newY + "px";
+    }
+
+    function finishDrag(event){
+        target.style.position = "absolute";
+        target.style.left = parseInt(target.style.left) + document.documentElement.scrollLeft+"px";
+        target.style.top = parseInt(target.style.top) + document.documentElement.scrollTop +"px";
+        //newY取不到，直接拿up的鼠标坐标算的话，如果在窗口外放开，但不可能在窗口外放开，但仍然要减去偏移值比较麻烦，直接解析出来把，
+        
+    }
+
+
+
+    function onMouseMove(event){
+        moveAt(event);
+    }
+
+    function onMouseUp(event){
+        if(!isDragging)return;
+        isDragging = false;
+        clearInterval(id);//up时也要移除。
+        finishDrag(event);
+        document.removeEventListener("mousemove",onMouseMove);
+        target.removeEventListener("mouseup",onMouseUp);
+
+    }
+
+
+})
+
+
+
