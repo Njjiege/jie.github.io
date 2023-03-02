@@ -1,4 +1,5 @@
 //头部的点击-------------------------------------------
+window.location = "https://server.imflash.com.cn";
 let headerUl = document.querySelectorAll(".headerUl");
 
 document.addEventListener("pointerover",function(event){
